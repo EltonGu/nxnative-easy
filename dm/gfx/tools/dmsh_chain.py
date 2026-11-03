@@ -31,6 +31,18 @@ XLATE_DIR = os.path.dirname(os.environ.get('XLATE', os.path.join(HERE, 'dmsh_xla
 # spirv-cross likewise: the in-repo build (spirv_cross_bin/build.sh, a pinned upstream commit) that matches the lock file, not the one on PATH, so every Mac converts with the same build
 SPIRV_CROSS = os.environ.get('SPIRV_CROSS', os.path.join(HERE, 'spirv_cross_bin/spirv-cross'))
 
+def macos_min():
+    """The Mac shader libraries' deployment target: MACOS_MIN in dm/mac/min_os.mk, the one place that also sets the host's own -mmacosx-version-min (dm/host/Makefile) and reaches
+    Info.plist through pack_app.py's min_os. A package declares one minimum macOS and its shader libraries are built for exactly that, so a Mac that can open the app can load every
+    library it carries. Reading the .mk keeps the two from drifting apart; DM_MACOS_MIN (dmsh_build.py) overrides it for an experiment, and both the value and the file are part of V
+    (the library names b-<V>), so a package can never mix libraries built for different minimums."""
+    for line in open(os.path.join(GFX, '../mac/min_os.mk'), encoding='utf-8'):
+        line = line.split('#', 1)[0].strip()
+        if line.startswith('MACOS_MIN'):
+            v = line.split(':=', 1)[1].strip() if ':=' in line else line.split('=', 1)[1].strip()
+            if v: return v
+    raise SystemExit('[RED] dm/mac/min_os.mk has no MACOS_MIN: the Mac shader libraries need its deployment target')
+
 def options():
     return 'debug=%s reduced=%s' % (os.environ.get('XLATE_DEBUG', '1') != '0', os.environ.get('XLATE_REDUCED', '1') == '1')
 
@@ -38,6 +50,9 @@ def version():
     h = hashlib.sha256()
     for f in FILES:
         h.update(f.encode() + b'\0' + open(os.path.join(GFX, f), 'rb').read() + b'\0')
+    # The Mac libraries' deployment target changes every compiled library, and it lives in a file outside FILES (dm/mac/min_os.mk, which the host's Makefile reads too): its value is
+    # part of V, so raising the minimum rebuilds the libraries into a new b-<V> instead of reusing this one's.
+    h.update(b'dm/mac/min_os.mk\0' + macos_min().encode() + b'\0')
     h.update(options().encode())
     return h.hexdigest()[:12]
 

@@ -165,7 +165,13 @@ PRE_STATS = collections.Counter()
 # -O1: the front end's -O2 (CorrelatedValuePropagation, then SimplifyCFG) folds the translated shaders' repeated tests of one value into switches whose cases jump past their own join.
 # Apple's GPU backend then exceeds its control-flow ID budget ("Max Unstruct ID 758 ... exceeds supported limit", a note, not an error) and falls back to a slower lowering:
 # Odyssey's alRenderMaterialUber took 25 minutes and 17.3 MB of GPU code, 31 s and 1.3 MB at -O1. Ordinary shaders come out within a few percent either way (the backend optimizes again)
-MAC_METAL = ['xcrun', '-sdk', 'macosx', 'metal', '-c', '-O1', '-fpreserve-invariance']
+# -mmacosx-version-min: without it `xcrun metal` takes the selected SDK's deployment target (27.0 with the Xcode 27.2 SDK), so the libraries come out with MSL 4.1 and a minimum of macOS 27.
+# A Mac app then carries libraries that every older supported Mac refuses ("This library is using language version 4.1 which is not supported on this OS"), and its whole screen stays black:
+# the host loads any shader library only from b-<level>/ and never recompiles one at run time (Issue: one package for macOS 26.6 and later). The value is the host's own minimum,
+# MACOS_MIN in dm/mac/min_os.mk (26.6, the README's macOS), read here so a package never claims to run on a Mac whose host could not start either. iOS has had its -mios-version-min=18.0
+# in dm/ios/tools/ios_metal.py from the start; this is the macOS counterpart that was missing.
+MAC_MIN = os.environ.get('DM_MACOS_MIN') or dmsh_chain.macos_min()
+MAC_METAL = ['xcrun', '-sdk', 'macosx', 'metal', '-c', '-O1', f'-mmacosx-version-min={MAC_MIN}', '-fpreserve-invariance']
 MAC_RECORD = ' '.join(MAC_METAL) + '; xcrun -sdk macosx metallib'
 # The outer shader and fetch-variant caches restore compiled libraries directly,
 # before the MSL compile cache can check their compiler. Keep override builds separate there too.

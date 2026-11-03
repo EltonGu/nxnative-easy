@@ -22,7 +22,8 @@
 #   --game: the profile (DM_GAMES_DIR as for game.py) whose shader_pairs.tsv and pso_pairs.tsv are the pairs, and whose depth_mode key the depth mode, unless --pairs / --depth say;
 #   --gpu: architectures, with or without the applegpu_ prefix (default g18p); --depth: the game's NVN depth mode (gl = near -w, NVN's default; zero = near 0, which the game sets
 #   with nvnDeviceSetDepthMode: the host knows it only at run time, so the profile says it; a wrong one costs the device its own prebuild, as without the archive);
-#   --os-min: the archives' system (default: for iOS the SDK's major version, e.g. 27.0; for macOS the major version this Mac runs, since the Mac app is built for the Mac that builds it).
+#   --os-min: the archives' system (default: for iOS the SDK's major version, e.g. 27.0; for macOS the shader libraries' deployment target, MACOS_MIN in dm/mac/min_os.mk, so the app's
+#             archive and its libraries name the same minimum).
 #   A device opens only an archive of its own major version (macOS 27.2 refused archives made for 26.0 and 26.6 and opened those for 27.0 and 27.2), and builds the bases itself
 #   otherwise: the SDK's version on a Mac whose system is older than its Xcode's SDK (macOS 26.6 with Xcode 27.1) left that Mac without them (GitHub issue #673)
 import argparse, hashlib, json, os, shutil, struct, subprocess, sys, time
@@ -179,8 +180,16 @@ def tool_version(platform):
 
 
 def os_min_default(platform):
-    cmd = ['sw_vers', '-productVersion'] if platform == 'macos' else ['xcrun', '-sdk', sdk(platform), '--show-sdk-version']
-    v = subprocess.run(cmd, capture_output=True, text=True, check=True).stdout.strip()
+    # macOS: the shader libraries' own deployment target (dm/mac/min_os.mk), not this Mac's system version. A Metal 4 archive opens only on the major version it was made for, and
+    # metal-tt refuses libraries built for a later system than the archive's, so the archive has to be made for the same minimum the libraries are. Taking this Mac's system version
+    # (the old default) made the app's archive useless to a Mac on an earlier major version, which then compiled every base at its first start.
+    # The value is passed through as it stands: 26.6 stays 26.6, because the archive's own version is what a Mac compares, and rounding it down to 26.0 would build an archive for a
+    # system no Mac runs. iOS keeps the SDK's major version: a device's system is the SDK's.
+    if platform == 'macos':
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import dmsh_chain
+        return dmsh_chain.macos_min()
+    v = subprocess.run(['xcrun', '-sdk', sdk(platform), '--show-sdk-version'], capture_output=True, text=True, check=True).stdout.strip()
     return v.split('.')[0] + '.0'
 
 
@@ -194,7 +203,7 @@ def main(argv=None):
     ap.add_argument('--gpu', default='g18p', help='GPU architectures, comma-separated (default g18p)')
     ap.add_argument('--depth', choices=('gl', 'zero'), help='the game\'s NVN depth mode (default: the profile\'s depth_mode, else gl: near = -w)')
     ap.add_argument('--platform', choices=('ios', 'macos'), default='ios')
-    ap.add_argument('--os-min', help='minimum OS of the archives (default: iOS, the SDK\'s major version; macOS, this Mac\'s)')
+    ap.add_argument('--os-min', help='minimum OS of the archives (default: iOS, the SDK\'s major version; macOS, MACOS_MIN from dm/mac/min_os.mk, as the shader libraries)')
     ap.add_argument('--script-only', action='store_true', help='write the script and the stamp, run no metal-tt')
     a = ap.parse_args(argv)
     if a.game:
