@@ -47,6 +47,17 @@
       "caption": ""
     },
     {
+      "id": "01007C50132C8000",
+      "name": "Ace Angler: Fishing Spirits",
+      "versions": [
+        "1.2.3"
+      ],
+      "notes": "dm/games/01007C50132C8000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
       "id": "010005501E68C000",
       "name": "Ace Attorney Investigations Collection",
       "versions": [
@@ -110,6 +121,28 @@
       "notes": "dm/games/010020D01AD24000/README.md",
       "console": "switch1",
       "artwork": "docs/images/animal-well.png",
+      "caption": ""
+    },
+    {
+      "id": "010020D01B890000",
+      "name": "Apollo Justice: Ace Attorney Trilogy",
+      "versions": [
+        "1.0.1"
+      ],
+      "notes": "dm/games/010020D01B890000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "01007F600B134000",
+      "name": "Assassin's Creed® Ⅲ Remastered",
+      "versions": [
+        "1.0.0"
+      ],
+      "notes": "dm/games/01007F600B134000/README.md",
+      "console": "switch1",
+      "artwork": null,
       "caption": ""
     },
     {
@@ -234,6 +267,17 @@
       "caption": ""
     },
     {
+      "id": "0100AD10102B2000",
+      "name": "BioShock Remastered",
+      "versions": [
+        "1.0.2"
+      ],
+      "notes": "dm/games/0100AD10102B2000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
       "id": "0100698009C6E000",
       "name": "Blasphemous",
       "versions": [
@@ -256,6 +300,50 @@
       "caption": ""
     },
     {
+      "id": "01004B800AF5A000",
+      "name": "Bloodstained: Curse of the Moon",
+      "versions": [
+        "1.1.1"
+      ],
+      "notes": "dm/games/01004B800AF5A000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "01004680124E6000",
+      "name": "Bloodstained: Curse of the Moon 2",
+      "versions": [
+        "1.3.2"
+      ],
+      "notes": "dm/games/01004680124E6000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "0100BF500207C000",
+      "name": "Bloodstained: Ritual of the Night",
+      "versions": [
+        "1.60"
+      ],
+      "notes": "dm/games/0100BF500207C000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "010064800F66A000",
+      "name": "Borderlands: Game of the Year Edition",
+      "versions": [
+        "1.0.2"
+      ],
+      "notes": "dm/games/010064800F66A000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
       "id": "0100F5D01DA3A000",
       "name": "Brain Memory Training Academy",
       "versions": [
@@ -267,6 +355,28 @@
       "caption": ""
     },
     {
+      "id": "01006DC010326000",
+      "name": "BRAVELY DEFAULT Ⅱ",
+      "versions": [
+        "1.0.0"
+      ],
+      "notes": "dm/games/01006DC010326000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "0100DBF01000A000",
+      "name": "Burnout Paradise Remastered",
+      "versions": [
+        "1.0.0"
+      ],
+      "notes": "dm/games/0100DBF01000A000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
       "id": "01009BF0072D4000",
       "name": "Captain Toad: Treasure Tracker",
       "versions": [
@@ -275,6 +385,17 @@
       "notes": "dm/games/01009BF0072D4000/README.md",
       "console": "switch1",
       "artwork": "docs/images/captain-toad-treasure-tracker.jpg",
+      "caption": ""
+    },
+    {
+      "id": "01009720213B0000",
+      "name": "CAPTAIN TSUBASA 2: WORLD FIGHTERS",
+      "versions": [
+        "1.0.6"
+      ],
+      "notes": "dm/games/01009720213B0000/README.md",
+      "console": "switch1",
+      "artwork": null,
       "caption": ""
     },
     {
@@ -322,6 +443,17 @@
       "caption": ""
     },
     {
+      "id": "0100777022394000",
+      "name": "Cozy Land",
+      "versions": [
+        "1.0.0"
+      ],
+      "notes": "dm/games/0100777022394000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
       "id": "01002E7016C46000",
       "name": "Cult of the Lamb",
       "versions": [
@@ -341,6 +473,17 @@
       "notes": "dm/games/0100A5C00D162000/README.md",
       "console": "switch1",
       "artwork": "docs/images/cuphead.jpg",
+      "caption": ""
+    },
+    {
+      "id": "010063100B2C2000",
+      "name": "Cytus α",
+      "versions": [
+        "1.0.6"
+      ],
+      "notes": "dm/games/010063100B2C2000/README.md",
+      "console": "switch1",
+      "artwork": null,
       "caption": ""
     },
     {
@@ -377,6 +520,17 @@
       "caption": ""
     },
     {
+      "id": "01007B600D5BC000",
+      "name": "Devil May Cry 3 Special Edition",
+      "versions": [
+        "1.0.1"
+      ],
+      "notes": "dm/games/01007B600D5BC000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
       "id": "01001B300B9BE000",
       "name": "Diablo III: Eternal Collection",
       "versions": [
@@ -407,6 +561,17 @@
       "notes": "dm/games/010014E00DB56000/README.md",
       "console": "switch1",
       "artwork": "docs/images/digimon-story-cyber-sleuth.jpg",
+      "caption": ""
+    },
+    {
+      "id": "010062E01FE0C000",
+      "name": "Digimon Story Time Stranger",
+      "versions": [
+        "1.2.2"
+      ],
+      "notes": "dm/games/010062E01FE0C000/README.md",
+      "console": "switch1",
+      "artwork": null,
       "caption": ""
     },
     {
@@ -454,6 +619,17 @@
       "caption": ""
     },
     {
+      "id": "010029D00E740000",
+      "name": "DOOM 3",
+      "versions": [
+        "1.0.5"
+      ],
+      "notes": "dm/games/010029D00E740000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
       "id": "010035F022078000",
       "name": "DRAGON BALL: Sparking! ZERO",
       "versions": [
@@ -462,6 +638,17 @@
       "notes": "dm/games/010035F022078000/README.md",
       "console": "switch1",
       "artwork": "docs/images/dragon-ball-sparking-zero.jpg",
+      "caption": ""
+    },
+    {
+      "id": "010051C0134F8000",
+      "name": "DRAGON BALL Z: KAKAROT + A NEW POWER AWAKENS SET",
+      "versions": [
+        "1.70"
+      ],
+      "notes": "dm/games/010051C0134F8000/README.md",
+      "console": "switch1",
+      "artwork": null,
       "caption": ""
     },
     {
@@ -531,6 +718,28 @@
       "caption": "60 fps with 1.8d.310c"
     },
     {
+      "id": "01004200189F4000",
+      "name": "Factorio",
+      "versions": [
+        "2.0.76"
+      ],
+      "notes": "dm/games/01004200189F4000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "0100D440269E8000",
+      "name": "Farming Simulator 26: Nintendo Switch Edition",
+      "versions": [
+        "1.0.1.0"
+      ],
+      "notes": "dm/games/0100D440269E8000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
       "id": "040041E0212AE000",
       "name": "Fast Fusion",
       "versions": [
@@ -538,6 +747,29 @@
       ],
       "notes": "dm/games/040041E0212AE000/README.md",
       "console": "switch2",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "010070E022546000",
+      "name": "Fate/hollow ataraxia REMASTERED",
+      "versions": [
+        "1.0.2 b723"
+      ],
+      "notes": "dm/games/010070E022546000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "01001C8016B4E000",
+      "name": "FIFA 23 Legacy Edition",
+      "versions": [
+        "1.0.3",
+        "1.0.0"
+      ],
+      "notes": "dm/games/01001C8016B4E000/README.md",
+      "console": "switch1",
       "artwork": null,
       "caption": ""
     },
@@ -583,6 +815,39 @@
       "notes": "dm/games/010038B015560000/README.md",
       "console": "switch1",
       "artwork": "docs/images/final-fantasy-tactics.jpg",
+      "caption": ""
+    },
+    {
+      "id": "0100AA201415C000",
+      "name": "FINAL FANTASY V",
+      "versions": [
+        "1.2.0_5"
+      ],
+      "notes": "dm/games/0100AA201415C000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "0100AA001415E000",
+      "name": "FINAL FANTASY VI",
+      "versions": [
+        "1.2.1_5"
+      ],
+      "notes": "dm/games/0100AA001415E000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "01008B900DC0A000",
+      "name": "FINAL FANTASY VIII Remastered",
+      "versions": [
+        "1.0.1_5"
+      ],
+      "notes": "dm/games/01008B900DC0A000/README.md",
+      "console": "switch1",
+      "artwork": null,
       "caption": ""
     },
     {
@@ -649,6 +914,17 @@
       "notes": "dm/games/010029B018432000/README.md",
       "console": "switch1",
       "artwork": "docs/images/ghost-trick-phantom-detective.jpg",
+      "caption": ""
+    },
+    {
+      "id": "01007E100456C000",
+      "name": "Guacamelee! 2",
+      "versions": [
+        "1.0.4"
+      ],
+      "notes": "dm/games/01007E100456C000/README.md",
+      "console": "switch1",
+      "artwork": null,
       "caption": ""
     },
     {
@@ -730,6 +1006,28 @@
       "caption": ""
     },
     {
+      "id": "0100BC60099FE000",
+      "name": "Iconoclasts",
+      "versions": [
+        "1.15p"
+      ],
+      "notes": "dm/games/0100BC60099FE000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "010092A0172E4000",
+      "name": "It Takes Two",
+      "versions": [
+        "1.0.3"
+      ],
+      "notes": "dm/games/010092A0172E4000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
       "id": "040077201BE50000",
       "name": "Kirby Air Riders",
       "versions": [
@@ -752,6 +1050,17 @@
       "caption": ""
     },
     {
+      "id": "0100A8E016236000",
+      "name": "Kirby's Dream Buffet",
+      "versions": [
+        "1.0.0"
+      ],
+      "notes": "dm/games/0100A8E016236000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
       "id": "01007E3006DDA000",
       "name": "Kirby Star Allies",
       "versions": [
@@ -760,6 +1069,28 @@
       "notes": "dm/games/01007E3006DDA000/README.md",
       "console": "switch1",
       "artwork": "docs/images/kirby-star-allies.jpg",
+      "caption": ""
+    },
+    {
+      "id": "0100830004FB6000",
+      "name": "L.A. Noire",
+      "versions": [
+        "1.2"
+      ],
+      "notes": "dm/games/0100830004FB6000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "010042D00D900000",
+      "name": "LEGO® Star Wars™: The Skywalker Saga",
+      "versions": [
+        "1.10.0"
+      ],
+      "notes": "dm/games/010042D00D900000/README.md",
+      "console": "switch1",
+      "artwork": null,
       "caption": ""
     },
     {
@@ -800,7 +1131,8 @@
       "id": "0400C3F00006E000",
       "name": "Mario Kart World",
       "versions": [
-        "v0"
+        "v0",
+        "1.8.0"
       ],
       "notes": "dm/games/0400C3F00006E000/README.md",
       "console": "switch2",
@@ -874,6 +1206,39 @@
       "caption": ""
     },
     {
+      "id": "01002D4007AE0000",
+      "name": "Mega Man Legacy Collection",
+      "versions": [
+        "1.0.3"
+      ],
+      "notes": "dm/games/01002D4007AE0000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "010099801C4FA000",
+      "name": "METAL GEAR SOLID: Peace Walker - Master Collection Version",
+      "versions": [
+        "1.3.0"
+      ],
+      "notes": "dm/games/010099801C4FA000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "0100D4900E82C000",
+      "name": "Metro 2033 Redux",
+      "versions": [
+        "1.0.0"
+      ],
+      "notes": "dm/games/0100D4900E82C000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
       "id": "010093801237C000",
       "name": "Metroid Dread",
       "versions": [
@@ -918,6 +1283,17 @@
       "caption": ""
     },
     {
+      "id": "0100D71004694000",
+      "name": "Minecraft for Nintendo Switch",
+      "versions": [
+        "1.26.62"
+      ],
+      "notes": "dm/games/0100D71004694000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
       "id": "0100B04011742000",
       "name": "Monster Hunter Rise",
       "versions": [
@@ -938,6 +1314,39 @@
       "console": "switch1",
       "artwork": "docs/images/monster-train-2.jpg",
       "caption": "60 fps with 1.1.1"
+    },
+    {
+      "id": "0100F2200C984000",
+      "name": "Mortal Kombat 11",
+      "versions": [
+        "1.0.26"
+      ],
+      "notes": "dm/games/0100F2200C984000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "01006BB00800A000",
+      "name": "NARUTO SHIPPUDEN™: Ultimate Ninja® STORM 3 Full Burst",
+      "versions": [
+        "1.0.1"
+      ],
+      "notes": "dm/games/01006BB00800A000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "0100D2D0190A4000",
+      "name": "NARUTO X BORUTO Ultimate Ninja STORM CONNECTIONS",
+      "versions": [
+        "1.7.1"
+      ],
+      "notes": "dm/games/0100D2D0190A4000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
     },
     {
       "id": "010029B0118E8000",
@@ -973,6 +1382,17 @@
       "caption": "60 fps with 1.0.3"
     },
     {
+      "id": "040057C02159A000",
+      "name": "Nintendo Switch 2 Welcome Tour",
+      "versions": [
+        "?"
+      ],
+      "notes": "dm/games/040057C02159A000/README.md",
+      "console": "switch2",
+      "artwork": null,
+      "caption": ""
+    },
+    {
       "id": "04008E001F098000",
       "name": "Nintendo Switch Sports Resort",
       "versions": [
@@ -980,6 +1400,28 @@
       ],
       "notes": "dm/games/04008E001F098000/README.md",
       "console": "switch2",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "01007D7001D0E000",
+      "name": "Oceanhorn",
+      "versions": [
+        "1.0.1"
+      ],
+      "notes": "dm/games/01007D7001D0E000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "01006CB010840000",
+      "name": "Oceanhorn 2: Knights of the Lost Realm",
+      "versions": [
+        "1.1"
+      ],
+      "notes": "dm/games/01006CB010840000/README.md",
+      "console": "switch1",
       "artwork": null,
       "caption": ""
     },
@@ -1061,6 +1503,28 @@
       "caption": "Official artwork · Mac testing in game notes"
     },
     {
+      "id": "01003DC0144B6000",
+      "name": "Outer Wilds",
+      "versions": [
+        "1.1.15.1027"
+      ],
+      "notes": "dm/games/01003DC0144B6000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "0100F28011892000",
+      "name": "Overcooked! All You Can Eat",
+      "versions": [
+        "1.0.12"
+      ],
+      "notes": "dm/games/0100F28011892000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
       "id": "0100A3900C3E2000",
       "name": "Paper Mario: The Origami King",
       "versions": [
@@ -1113,6 +1577,28 @@
       "notes": "dm/games/01005CA01580E000/README.md",
       "console": "switch1",
       "artwork": "docs/images/persona-5-royal.jpg",
+      "caption": ""
+    },
+    {
+      "id": "0100801011C3E000",
+      "name": "Persona 5 Strikers",
+      "versions": [
+        "1.0.0"
+      ],
+      "notes": "dm/games/0100801011C3E000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "010087701B092000",
+      "name": "Persona 5 Tactica",
+      "versions": [
+        "1.1.0"
+      ],
+      "notes": "dm/games/010087701B092000/README.md",
+      "console": "switch1",
+      "artwork": null,
       "caption": ""
     },
     {
@@ -1270,6 +1756,17 @@
       "caption": ""
     },
     {
+      "id": "01005FF002E2A000",
+      "name": "Rayman Legends: Definitive Edition",
+      "versions": [
+        "1.2"
+      ],
+      "notes": "dm/games/01005FF002E2A000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
       "id": "01007820196A6000",
       "name": "Red Dead Redemption",
       "versions": [
@@ -1281,6 +1778,17 @@
       "console": "switch1",
       "artwork": "docs/images/red-dead-redemption.jpg",
       "caption": "Official artwork · Mac testing in game notes"
+    },
+    {
+      "id": "010050F00BC1A000",
+      "name": "Resident Evil",
+      "versions": [
+        "1.0.0"
+      ],
+      "notes": "dm/games/010050F00BC1A000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
     },
     {
       "id": "0400569027BF4000",
@@ -1302,6 +1810,17 @@
       "notes": "dm/games/010032E00E6E2000/README.md",
       "console": "switch1",
       "artwork": "docs/images/return-of-the-obra-dinn.png",
+      "caption": ""
+    },
+    {
+      "id": "0100D800117F4000",
+      "name": "Re:ZERO -Starting Life in Another World- The Prophecy of the Throne",
+      "versions": [
+        "1.0.2"
+      ],
+      "notes": "dm/games/0100D800117F4000/README.md",
+      "console": "switch1",
+      "artwork": null,
       "caption": ""
     },
     {
@@ -1338,6 +1857,17 @@
       "caption": ""
     },
     {
+      "id": "0100D5501857E000",
+      "name": "Sam & Max: The Devil's Playhouse",
+      "versions": [
+        "1.8.0"
+      ],
+      "notes": "dm/games/0100D5501857E000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
       "id": "01008C0016544000",
       "name": "Sea of Stars",
       "versions": [
@@ -1360,6 +1890,28 @@
       "caption": "60 fps with 1.0.3"
     },
     {
+      "id": "010044500C182000",
+      "name": "Sid Meier's Civilization VI",
+      "versions": [
+        "1.2.19"
+      ],
+      "notes": "dm/games/010044500C182000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "0100C3601518C000",
+      "name": "Sid Meier's Civilization VII",
+      "versions": [
+        "1.5.0.1"
+      ],
+      "notes": "dm/games/0100C3601518C000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
       "id": "0100D5B026844000",
       "name": "Silver Pines",
       "versions": [
@@ -1368,6 +1920,17 @@
       "notes": "dm/games/0100D5B026844000/README.md",
       "console": "switch1",
       "artwork": "docs/images/silver-pines.jpg",
+      "caption": ""
+    },
+    {
+      "id": "010026300BA4A000",
+      "name": "Slay the Spire",
+      "versions": [
+        "1.0"
+      ],
+      "notes": "dm/games/010026300BA4A000/README.md",
+      "console": "switch1",
+      "artwork": null,
       "caption": ""
     },
     {
@@ -1390,6 +1953,28 @@
       "notes": "dm/games/01008F701C074000/README.md",
       "console": "switch1",
       "artwork": "docs/images/sonic-superstars.jpg",
+      "caption": ""
+    },
+    {
+      "id": "01008F2005154000",
+      "name": "South Park: The Fractured But Whole",
+      "versions": [
+        "1.05"
+      ],
+      "notes": "dm/games/01008F2005154000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "010095300B6A4000",
+      "name": "South Park: The Stick of Truth",
+      "versions": [
+        "1.01"
+      ],
+      "notes": "dm/games/010095300B6A4000/README.md",
+      "console": "switch1",
+      "artwork": null,
       "caption": ""
     },
     {
@@ -1481,6 +2066,17 @@
       "caption": ""
     },
     {
+      "id": "0100ED400EEC2000",
+      "name": "STORY OF SEASONS: Friends of Mineral Town",
+      "versions": [
+        "1.0.5"
+      ],
+      "notes": "dm/games/0100ED400EEC2000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
       "id": "0100EC9010258000",
       "name": "Streets of Rage 4",
       "versions": [
@@ -1546,6 +2142,17 @@
       "notes": "dm/games/010015100B514000/README.md",
       "console": "switch1",
       "artwork": "docs/images/super-mario-bros-wonder.jpg",
+      "caption": ""
+    },
+    {
+      "id": "040015100B514001",
+      "name": "Super Mario Bros. Wonder – Nintendo Switch 2 Edition + Meetup in Bellabel Park",
+      "versions": [
+        "1.2.1"
+      ],
+      "notes": "dm/games/040015100B514001/README.md",
+      "console": "switch2",
+      "artwork": null,
       "caption": ""
     },
     {
@@ -1615,6 +2222,17 @@
       "caption": ""
     },
     {
+      "id": "01008D300C50C000",
+      "name": "Super Nintendo Entertainment System – Nintendo Classics",
+      "versions": [
+        "6.0.0"
+      ],
+      "notes": "dm/games/01008D300C50C000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
       "id": "010063301BD50000",
       "name": "SUPER ROBOT WARS Y",
       "versions": [
@@ -1659,6 +2277,17 @@
       "caption": ""
     },
     {
+      "id": "0100FE701475A000",
+      "name": "Teenage Mutant Ninja Turtles: Shredder's Revenge",
+      "versions": [
+        "1.0.9"
+      ],
+      "notes": "dm/games/0100FE701475A000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
       "id": "01009BC00C38A000",
       "name": "The Binding of Isaac: Rebirth",
       "versions": [
@@ -1678,6 +2307,17 @@
       "notes": "dm/games/010036E00FB20000/README.md",
       "console": "switch1",
       "artwork": "docs/images/the-great-ace-attorney-chronicles.jpg",
+      "caption": ""
+    },
+    {
+      "id": "01008CB0156BC000",
+      "name": "The Legend of Heroes: Trails into Reverie",
+      "versions": [
+        "1.0.4"
+      ],
+      "notes": "dm/games/01008CB0156BC000/README.md",
+      "console": "switch1",
+      "artwork": null,
       "caption": ""
     },
     {
@@ -1717,7 +2357,7 @@
       "id": "0400486024DEC000",
       "name": "The Legend of Zelda: Ocarina of Time",
       "versions": [
-        "v131072"
+        "1.1.1"
       ],
       "notes": "dm/games/0400486024DEC000/README.md",
       "console": "switch2",
@@ -1758,6 +2398,17 @@
       "caption": ""
     },
     {
+      "id": "0100A0800E9C4000",
+      "name": "The Witcher 3: Wild Hunt — Complete Edition",
+      "versions": [
+        "4.04b"
+      ],
+      "notes": "dm/games/0100A0800E9C4000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
       "id": "01007A2027548000",
       "name": "Trails in the Sky 2nd Chapter",
       "versions": [
@@ -1780,6 +2431,17 @@
       "caption": "60 fps with 1.1.1"
     },
     {
+      "id": "010057A01E4D4000",
+      "name": "TSUKIHIME A piece of blue glass moon",
+      "versions": [
+        "1.0.2"
+      ],
+      "notes": "dm/games/010057A01E4D4000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
       "id": "0100DA801624E000",
       "name": "TUNIC",
       "versions": [
@@ -1789,6 +2451,28 @@
       "console": "switch1",
       "artwork": "docs/images/tunic.jpg",
       "caption": "Official artwork · Mac testing in game notes"
+    },
+    {
+      "id": "0100CD701434C000",
+      "name": "Twelve Minutes",
+      "versions": [
+        "1.0.1"
+      ],
+      "notes": "dm/games/0100CD701434C000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "01007330027EE000",
+      "name": "ULTRA STREET FIGHTER II: The Final Challengers",
+      "versions": [
+        "1.1.1"
+      ],
+      "notes": "dm/games/01007330027EE000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
     },
     {
       "id": "010069401ADB8000",
@@ -1813,6 +2497,39 @@
       "caption": "Unicorn Overlord~4 GB"
     },
     {
+      "id": "01008F4014A74000",
+      "name": "UnMetal",
+      "versions": [
+        "1.2.0"
+      ],
+      "notes": "dm/games/01008F4014A74000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "01007CB025C58000",
+      "name": "Volcano Princess",
+      "versions": [
+        "1.0.2"
+      ],
+      "notes": "dm/games/01007CB025C58000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "0100CAA026246000",
+      "name": "Warhammer Survivors",
+      "versions": [
+        "1.0.0"
+      ],
+      "notes": "dm/games/0100CAA026246000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
       "id": "0100217023F6C000",
       "name": "Well Dweller",
       "versions": [
@@ -1824,6 +2541,17 @@
       "caption": ""
     },
     {
+      "id": "0100D0B00FB74000",
+      "name": "XCOM 2 Collection",
+      "versions": [
+        "1.0.3"
+      ],
+      "notes": "dm/games/0100D0B00FB74000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
       "id": "0100E95004038000",
       "name": "Xenoblade Chronicles 2",
       "versions": [
@@ -1832,6 +2560,17 @@
       "notes": "dm/games/0100E95004038000/README.md",
       "console": "switch1",
       "artwork": "docs/images/xenoblade-chronicles-2.jpg",
+      "caption": ""
+    },
+    {
+      "id": "0400E95004038001",
+      "name": "Xenoblade Chronicles 2 – Nintendo Switch 2 Edition",
+      "versions": [
+        "3.0.1"
+      ],
+      "notes": "dm/games/0400E95004038001/README.md",
+      "console": "switch2",
+      "artwork": null,
       "caption": ""
     },
     {
@@ -1854,6 +2593,28 @@
       "notes": "dm/games/0100FF500E34A000/README.md",
       "console": "switch1",
       "artwork": "docs/images/xenoblade-chronicles-definitive-edition.jpg",
+      "caption": ""
+    },
+    {
+      "id": "0100453019AA8000",
+      "name": "Xenoblade Chronicles X: Definitive Edition",
+      "versions": [
+        "1.0.1"
+      ],
+      "notes": "dm/games/0100453019AA8000/README.md",
+      "console": "switch1",
+      "artwork": null,
+      "caption": ""
+    },
+    {
+      "id": "0400453019AA8001",
+      "name": "Xenoblade Chronicles X: Definitive Edition – Nintendo Switch 2 Edition",
+      "versions": [
+        "2.0.0"
+      ],
+      "notes": "dm/games/0400453019AA8001/README.md",
+      "console": "switch2",
+      "artwork": null,
       "caption": ""
     },
     {

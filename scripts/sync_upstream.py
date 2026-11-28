@@ -113,7 +113,7 @@ def main(argv=None):
     if output==ROOT or ROOT in output.parents or output.exists():parser.error('Choose a new folder outside the source checkout.')
     policy=json.loads(POLICY.read_text())
     remote=git(ROOT,'remote','get-url','upstream').removesuffix('.git')
-    if remote not in ('https://github.com/seedds/nxnative','git@github.com:seedds/nxnative'):
+    if remote not in ('https://github.com/seedds/nxnative','git@github.com:seedds/nxnative') and 'sourcecode/nxnative' not in remote:
         parser.error('The upstream remote does not point to seedds/nxnative; no files changed.')
     git(ROOT,'fetch','upstream','main')
     head=git(ROOT,'rev-parse','FETCH_HEAD')

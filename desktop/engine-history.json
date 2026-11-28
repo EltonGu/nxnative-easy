@@ -1,7 +1,7 @@
 {
   "schema": 2,
-  "number": 374,
-  "version": "1.0.19",
+  "number": 376,
+  "version": "1.0.21",
   "versions": {
     "355": "1.0.0",
     "356": "1.0.1",
@@ -22,11 +22,27 @@
     "371": "1.0.16",
     "372": "1.0.17",
     "373": "1.0.18",
-    "374": "1.0.19"
+    "374": "1.0.19",
+    "375": "1.0.20",
+    "376": "1.0.21"
   },
-  "revision": "21bc52d50f6da293ebd441cb010e2c71e5366d9a",
-  "upstream": "c4aa24c57bff65e7a963db539123a260691e4dbe",
+  "revision": "174aa2bb768464cfd40d6151f90910b23ffe52c1",
+  "upstream": "e8ac733c49412cea6f4d704993507e9600fba0b4",
   "entries": [
+    {
+      "number": 376,
+      "version": "1.0.21",
+      "revision": "174aa2bb768464cfd40d6151f90910b23ffe52c1",
+      "date": "2026-11-27T16:22:35+08:00",
+      "title": "Release Easy 1.38.0: integrate upstream seedds/nxnative through e8ac733c4"
+    },
+    {
+      "number": 375,
+      "version": "1.0.20",
+      "revision": "89dd8851cc4f16908793d207510b5cf982e844e3",
+      "date": "2026-11-27T15:25:53+08:00",
+      "title": "Merge upstream seedds/nxnative through e8ac733c4"
+    },
     {
       "number": 374,
       "version": "1.0.19",
@@ -180,20 +196,6 @@
       "revision": "7b4867b574a494b43eca1ebbcdd9d9bb7290b2df",
       "date": "2026-11-03T10:58:17-06:00",
       "title": "Resume automatic checking when a late save begins downloading"
-    },
-    {
-      "number": 352,
-      "version": null,
-      "revision": "46e84d6128ba9c30f3f2c8739bfed9797597b11a",
-      "date": "2026-11-03T10:40:52-06:00",
-      "title": "Automatically retry pending save continuity before play"
-    },
-    {
-      "number": 351,
-      "version": null,
-      "revision": "1f9da89e29896a7b31d7ea6491321346e599485f",
-      "date": "2026-11-02T18:21:16-06:00",
-      "title": "Keep the checkpoint lease until claimed workers finish"
     }
   ],
   "sources": {
@@ -812,6 +814,11 @@
     "3cc0425f471edf073d013b01cd30e2989efda708": 372,
     "a826549c2c2f8e13eda5a8421ef17ea38f686d21": 372,
     "12f64d267073c19346143a0833d9a1d8988291b0": 373,
-    "21bc52d50f6da293ebd441cb010e2c71e5366d9a": 374
+    "21bc52d50f6da293ebd441cb010e2c71e5366d9a": 374,
+    "d1a8d4f7844d851433330a3545b22977d18c296a": 374,
+    "efe98a1489216145e2ec3617f081602093ee3e28": 374,
+    "fa22589c0338aff3715fa34ead14100b0f721099": 374,
+    "89dd8851cc4f16908793d207510b5cf982e844e3": 375,
+    "174aa2bb768464cfd40d6151f90910b23ffe52c1": 376
   }
 }

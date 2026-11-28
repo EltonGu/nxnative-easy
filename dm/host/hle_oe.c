@@ -1,6 +1,6 @@
 // nn::oe (application operating environment): on the real device the console state is queried through the am/oe services; the host gives fixed state directly.
 // oe::Initialize is in hle_sdkinit.c, not here.
-// Environment switches: DM_OPMODE=0 handheld / 1 console (default: the profile's op_mode, console unless set; console corresponds to the console-mode render profile); DM_LANG=language code (default en-US; the iOS app sets it from the IPA's DMLanguage, main.m).
+// Environment switches: DM_OPMODE=0 handheld / 1 console (default: the profile's op_mode, console unless set; console corresponds to the console-mode render profile); DM_LANG=language code (default: first supported language in control.nacp, else en-US; the apps set it from Info.plist DMLanguage).
 #include "hle.h"
 #include "front.h"
 
@@ -20,8 +20,8 @@ int dm_opmode(void) {
     return m;
 }
 // ---------- System notification queue (AppletMessage): front end state changes → fetched by the game every frame with TryPopNotificationMessage ----------
-// Message numbers the host sends: 15 focus change, 30 operation mode change, 31 performance mode change
-enum { MSG_FOCUS = 15, MSG_OPMODE = 30, MSG_PERFMODE = 31 };
+// Message numbers the host sends: 15 focus change, 30 operation mode change, 31 performance mode change, 95 startup logo disappeared
+enum { MSG_FOCUS = 15, MSG_OPMODE = 30, MSG_PERFMODE = 31, MSG_STARTUP_LOGO = 95 };
 #define MQ 32
 static pthread_mutex_t g_mq_lock = PTHREAD_MUTEX_INITIALIZER; static pthread_cond_t g_mq_cond = PTHREAD_COND_INITIALIZER;   // cond: wakes the blocking PopNotificationMessage
 static uint32_t g_mq[MQ]; static int g_mqh, g_mqn;
@@ -47,7 +47,8 @@ static void mq_push_(uint32_t m) {
     // 15/30/31 are invalidation notifications meaning "query the current state", not events carrying historical values.
     // While one of the same type has not been taken yet, the first queue position is kept: a consumer loop only reads the latest state, repeated notifications write back the same thing, and with the same size there is no further resize.
     // Only these three state notifications are merged; future per-occurrence events (such as Resume/Exit) must not use this rule.
-    // Legitimate producers only send these three, so at most three items are pending, and any number of focus losses/restores no longer hits the 32-slot limit; after a pop, new changes are enqueued as usual.
+    // Legitimate state producers only send these three, so at most three of them are pending, and any number of focus losses/restores no longer hits the 32-slot limit; after a pop, new changes are enqueued as usual.
+    // Per-occurrence messages (95, startup logo disappeared) keep a position each.
     if (m == MSG_FOCUS || m == MSG_OPMODE || m == MSG_PERFMODE)
         for (int i = 0; i < g_mqn; i++)
             if (g_mq[(g_mqh + i) % MQ] == m) { pthread_mutex_unlock(&g_mq_lock); return; }
@@ -100,6 +101,13 @@ void dm_focus_set(int st) {
 }
 static int opmode(void) { return dm_opmode(); }
 
+// oe::Initialize is replaced by the host, so SDK wrappers must never access its
+// uncreated am ApplicationFunctions. These two only toggle Horizon's crash-report
+// service (command 90), not process signal handling. There is no such service on
+// the host; native crash diagnostics remain enabled. Found on FIFA 23, SDK 13.3.5.
+HLE_FORCE("_ZN2nn2oe17EnableCrashReportEv", "Horizon crash-report service switch; no host service", void, h_oe_EnableCrashReport, void) {}
+HLE_FORCE("_ZN2nn2oe18DisableCrashReportEv", "Horizon crash-report service switch; no host service", void, h_oe_DisableCrashReport, void) {}
+
 // The SDK's backlight calls dereference am's absent CommonStateGetter.
 // The host does not control a Switch LCD; leave the host display on.
 HLE_FORCE("_ZN2nn2oe20SwitchLcdBacklightOnEv", "turn the handheld screen on (through am); the host has no Switch LCD", void, h_oe_LcdOn, void) {}
@@ -112,6 +120,8 @@ HLE_FORCE("_ZN2nn2oe41ExitApplicationAndGoBackToInStoreDemoMenuEv", "the in-stor
     static int once; if (!once++) LOG("[RED] oe: ExitApplicationAndGoBackToInStoreDemoMenu called: ignored (no in-store demo menu)");
 }
 HLE_FORCE("_ZN2nn2oe17FinishStartupLogoEv", "dismiss the system boot screen (through the am application proxy); the host has no boot screen", void, h_oe_FinishLogo, void) {}   // Metroid Dread calls it at main+0xadfed0
+HLE_FORCE("_ZN2nn2oe35EnableStartupLogoDisappearedMessageEv", "startup logo is already absent: deliver its notification through the host's queue, without an am proxy",
+          void, h_oe_EnableStartupLogoMessage, void) { mq_push(MSG_STARTUP_LOGO); }
 // am retains the requested inactivity extension even when auto-sleep is disabled.
 // SDK 12.3.9 maps the normal setter to mode 1, Unsafe to mode 2, and false to 0.
 // Xenoblade Chronicles 3 reads it after the opening movie (sdk+0x3391f0).
@@ -122,7 +132,7 @@ HLE_FORCE("_ZN2nn2oe43GetUserInactivityDetectionTimeExtensionModeEv", "inactivit
 HLE_FORCE("_ZN2nn2oe15EnableRecordingEv", "video recording switch; the host has no system recording", void, h_oe_EnableRec, void) {}
 // Applet resource user ID (ARUID, the number am assigns to this process): the host has no am, and the SDK's own getter returns 0. SDK 20's OpenAudioRenderer (the CPU rendering + manual execution path, sdk+0x221730)
 //   aborts when it gets 0 (The Legend of Zelda: Breath of the Wild 1.9.0); SDK 16 did not check. Report a fixed non-zero ID, used only as an identifier
-HLE_FORCE("_ZN2nn6applet23GetAppletResourceUserIdEv", "applet resource user ID; the host returns a fixed non-zero value", uint64_t, h_applet_Aruid, void) { return 0x80; }
+HLE_FORCE("_ZN2nn6applet23GetAppletResourceUserIdEv", "applet resource user ID; the host returns a fixed non-zero value", uint64_t, h_applet_Aruid, void) { return DM_APPLET_RESOURCE_USER_ID; }
 // Launch parameter (present only when another program launched this one with one; returns bool): the host never passes one
 // Launch parameter (present only when another program launched this one with one; returns bool): DM_LAUNCH_PARAM=<file>, written by oe::ExecuteProgram on the way here (below), else what
 // the profile's launch_param describes, for a program of a multi-program application run by itself: Super Mario 3D All-Stars' games quit without the launcher's language and two volumes
@@ -173,22 +183,25 @@ HLE_FORCE("_ZN2nn2oe23GetPreviousProgramIndexEv", "previous program index: the p
 // program, with no parameters. An app of one program cannot start itself again: the front end asks the player to open the app again (front_program_handoff with no DM_EXEC_OUT), and the app ends.
 #if !TARGET_OS_IPHONE
 // cwd NULL: stay in this folder. The plan owns what it allocates (prog_plan_free): env (its entries point into environ, tsv or own), the table tsv that exe, cwd and arg point into,
-// and own, the two start keys. The host makes one plan and replaces itself with it (execve); a caller that makes another frees the first
-typedef struct { const char *exe, *cwd; char **argv, **env; char *argv2[3]; char self[4096]; char *tsv, *own[2]; } prog_plan;
-static void prog_plan_free(prog_plan *p) { free(p->env); free(p->tsv); free(p->own[0]); free(p->own[1]); memset(p, 0, sizeof *p); }
+// and own, the start keys (DM_LAUNCH_PARAM, DM_PREV_PROGRAM, optional DM_OPEN_USERS). The host makes one plan and replaces itself with it (execve); a caller that makes another frees the first
+typedef struct { const char *exe, *cwd; char **argv, **env; char *argv2[3]; char self[4096]; char *tsv, *own[3]; } prog_plan;
+static void prog_plan_free(prog_plan *p) { free(p->env); free(p->tsv); for (int i = 0; i < 3; i++) free(p->own[i]); memset(p, 0, sizeof *p); }
 static int prog_row_sets(const char *row, const char *kv) {
     size_t kl = strcspn(kv, "=");
     for (const char *f = strchr(row, '\t'); f && f[1]; f = strchr(f + 1, '\t')) if (!strncmp(f + 1, kv, kl) && f[1 + kl] == '=') return 1;
     return 0;
 }
-static int prog_start_key(const char *kv) { return !strncmp(kv, "DM_LAUNCH_PARAM=", 16) || !strncmp(kv, "DM_PREV_PROGRAM=", 16) || !strncmp(kv, "DM_RELAUNCH=", 12); }
+static int prog_start_key(const char *kv) {
+    return !strncmp(kv, "DM_LAUNCH_PARAM=", 16) || !strncmp(kv, "DM_PREV_PROGRAM=", 16) ||
+           !strncmp(kv, "DM_RELAUNCH=", 12) || !strncmp(kv, "DM_OPEN_USERS=", 14);
+}
 // The plan of the program that starts: rows[hit] of the table (hit -1: this host itself, again; the rows point into out->tsv). Its environment is this one less the keys a start sets and
-// every key a row sets, then the row's keys, then the start's own (DM_RELAUNCH=1, or DM_LAUNCH_PARAM and DM_PREV_PROGRAM with the parameters in <its folder>/launch_param.bin).
+// every key a row sets, then the row's keys, then the start's own (DM_RELAUNCH=1, or DM_LAUNCH_PARAM, DM_PREV_PROGRAM and optional DM_OPEN_USERS with the parameters in <its folder>/launch_param.bin).
 // 0: no plan (out keeps what it holds, for the caller's prog_plan_free)
-static int prog_plan_make(char **rows, int nr, int hit, prog_plan *out, const void *param, size_t n, int relaunch, const char *call) {
+static int prog_plan_make(char **rows, int nr, int hit, prog_plan *out, const void *param, size_t n, int relaunch, unsigned open_users, const char *call) {
     extern char **environ;
     size_t ne = 0; while (environ[ne]) ne++;
-    char **env = out->env = calloc(ne + 68, sizeof *env); size_t k = 0;
+    char **env = out->env = calloc(ne + 69, sizeof *env); size_t k = 0;
     if (!env) die("%s: out of memory", call);
     for (size_t i = 0; i < ne; i++) {
         int drop = prog_start_key(environ[i]);
@@ -215,12 +228,14 @@ static int prog_plan_make(char **rows, int nr, int hit, prog_plan *out, const vo
     }
     if (relaunch) env[k++] = "DM_RELAUNCH=1";
     else {
-        char *pp = NULL, *pe = NULL, *pv = NULL;
+        char *pp = NULL, *pe = NULL, *pv = NULL, *ou = NULL;
         if (asprintf(&pp, "%s/launch_param.bin", dir) < 0 || asprintf(&pe, "DM_LAUNCH_PARAM=%s", pp) < 0 || asprintf(&pv, "DM_PREV_PROGRAM=%d", (int)(DM_GAME_PROGRAM_ID & 0xf)) < 0) die("%s: out of memory", call);
+        if (open_users && asprintf(&ou, "DM_OPEN_USERS=%x", open_users) < 0) die("%s: out of memory", call);
         FILE *po = fopen(pp, "wb");
         if (!po || (n && fwrite(param, n, 1, po) != 1)) LOG("[RED] %s: cannot write %s", call, pp);
         if (po) fclose(po);
         free(pp); env[k++] = out->own[0] = pe; env[k++] = out->own[1] = pv;
+        if (ou) env[k++] = out->own[2] = ou;
     }
     env[k] = NULL;
     return 1;
@@ -232,7 +247,7 @@ static int oe_plan(int index, const void *param, size_t n, int relaunch, prog_pl
     const char *pf = getenv("DM_PROGRAMS");
     if (!pf || !*pf) {   // a program run by itself
         if (!relaunch && index != cur) return 0;
-        if (!prog_plan_make(NULL, 0, -1, P, param, n, relaunch, call)) { prog_plan_free(P); return 0; }
+        if (!prog_plan_make(NULL, 0, -1, P, param, n, relaunch, relaunch ? 0 : dm_account_pushed_users(), call)) { prog_plan_free(P); return 0; }
         LOG("%s: this program ends and starts again", call);
         return 1;
     }
@@ -248,11 +263,12 @@ static int oe_plan(int index, const void *param, size_t n, int relaunch, prog_pl
         if (atoi(ln) == 0) first = nr;
         rows[nr++] = ln;
     }
+    int fallback = 0;
     if (hit < 0) {
         LOG("[RED] %s: this application has no such program here; its first program starts instead", call);
-        hit = first; param = NULL; n = 0;
+        hit = first; param = NULL; n = 0; fallback = 1;
     }
-    if (hit < 0 || !prog_plan_make(rows, nr, hit, P, param, n, relaunch, call)) { prog_plan_free(P); return 0; }
+    if (hit < 0 || !prog_plan_make(rows, nr, hit, P, param, n, relaunch, (relaunch || fallback) ? 0 : dm_account_pushed_users(), call)) { prog_plan_free(P); return 0; }
     if (relaunch) LOG("%s: the application starts again from its first program, %s", call, P->exe);
     else LOG("%s: this program ends, %s starts", call, P->exe);
     return 1;
@@ -379,6 +395,11 @@ HLE_FORCE("_ZN2nn2oe24IsInStoreDemoModeEnabledEv", "retail store demo mode (thro
 HLE_FORCE("_ZN2nn2oe27SetPerformanceConfigurationENS0_15PerformanceModeEi", "set the CPU/GPU clock config; the host does not scale clocks", void, h_oe_SetPerfCfg, int mode, int cfg) {
     LOG("oe::SetPerformanceConfiguration mode=%d cfg=%#x (ignored)", mode, cfg);
 }
+// The one-argument overload sets the configuration of both modes (SDK 14.3, TUNIC's sdk+0x3a5630: a table lookup, then apm::SetPerformanceConfiguration for Normal and for Boost); SDK 21.4.7's
+// goes through oe::detail::ApmSetPerformanceConfiguration. Both read the apm session the host never opened (Warhammer Survivors: null read at sdk+0x40720c as a scene begins)
+HLE_FORCE("_ZN2nn2oe27SetPerformanceConfigurationEi", "set the CPU/GPU clock config of both modes (through apm); the host does not scale clocks", void, h_oe_SetPerfCfgBoth, int cfg) {
+    LOG("oe::SetPerformanceConfiguration cfg=%#x (ignored)", cfg);
+}
 
 // Scripted state changes (verify lifecycle / overheat downgrade without a window): DM_OE_SCRIPT="focus=3@10,focus=1@20,opmode=0@30" (second N); bg=1 / bg=0 run the whole background round trip (see script_bg)
 // Time counts from the game's first notification fetch. Coexists with front end calls.
@@ -452,19 +473,38 @@ HLE_FORCE("_ZN2nn2oe28SetResumeNotificationEnabledEb", "resume notification swit
 HLE_FORCE("_ZN2nn2oe42SetOperationModeChangedNotificationEnabledEb", "operation mode change notification switch", void, h_oe_SetOpModeNtf, unsigned on) { g_ntf_opmode = on & 0xff; }
 HLE_FORCE("_ZN2nn2oe44SetPerformanceModeChangedNotificationEnabledEb", "performance mode change notification switch", void, h_oe_SetPerfModeNtf, unsigned on) { g_ntf_perfmode = on & 0xff; }
 
-// nn::settings::LanguageCode = struct { char string[8]; }, 8 bytes returned by value in x0
-HLE_FORCE("_ZN2nn2oe18GetDesiredLanguageEv", "system language query; value from DM_LANG", uint64_t, h_oe_GetLang, void) {
+// nn::settings::LanguageCode = struct { char string[8]; }, 8 bytes returned by value in x0.
+// When DM_LANG is unset, pick the first language supported in control.nacp's SupportedLanguageFlag
+// (+0x302C, NACP bit order matching dm/tools/nacp.py LANGUAGES: en-US, then en-GB, then the game's
+// first supported language), matching Horizon and build_ipa_from_nsp.py's game_language("en-US").
+static const char *oe_lang(void) {
     const char *e = getenv("DM_LANG");
+    if (e && *e) return e;
+    static const char *const k_nacp_lang[] = {
+        "en-US", "en-GB", "ja", "fr", "de", "es-419", "es", "it",
+        "nl", "fr-CA", "pt", "ru", "ko", "zh-Hant", "zh-Hans", "pt-BR",
+        "pl", "th",
+    };
+    uint8_t b[4];
+    if (!dm_control_read(0x302C, b, sizeof b, NULL, 0)) {
+        uint32_t flag = (uint32_t)b[0] | ((uint32_t)b[1] << 8) | ((uint32_t)b[2] << 16) | ((uint32_t)b[3] << 24);
+        for (unsigned i = 0; i < sizeof k_nacp_lang / sizeof *k_nacp_lang; i++)
+            if (flag & (1u << i)) return k_nacp_lang[i];
+    }
+    return "en-US";
+}
+HLE_FORCE("_ZN2nn2oe18GetDesiredLanguageEv", "system language query; value from DM_LANG, else control.nacp", uint64_t, h_oe_GetLang, void) {
+    const char *e = oe_lang();
     char code[8] = {0};
-    strncpy(code, e && *e ? e : "en-US", sizeof code - 1);
+    strncpy(code, e, sizeof code - 1);
     uint64_t v; memcpy(&v, code, 8);
     return v;
 }
 
 // The console's region (Animal Crossing: New Horizons 3.0.3): the SDK asks settings::system::GetRegionCode, which reaches set:sys. A region that fits the language the game is given:
 // 0 Japan, 1 the Americas, 2 Europe, 4 Hong Kong / Taiwan / Korea (nn::settings::system::RegionCode; 3 Australia and 5 China are left out, no language points at them alone)
-HLE_FORCE("_ZN2nn2oe13GetRegionCodeEv", "console region (set:sys); from DM_LANG", int, h_oe_GetRegion, void) {
-    const char *e = getenv("DM_LANG"); if (!e || !*e) e = "en-US";
+HLE_FORCE("_ZN2nn2oe13GetRegionCodeEv", "console region (set:sys); from DM_LANG, else control.nacp", int, h_oe_GetRegion, void) {
+    const char *e = oe_lang();
     int r = !strncmp(e, "ja", 2) ? 0 : !strncmp(e, "ko", 2) || !strncmp(e, "zh", 2) ? 4 : !strcmp(e, "en-US") || !strcmp(e, "fr-CA") || !strcmp(e, "es-419") || !strcmp(e, "pt-BR") ? 1 : 2;
     static int once; if (!once++) LOG("oe::GetRegionCode: %d for language %s", r, e);
     return r;

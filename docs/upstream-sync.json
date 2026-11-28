@@ -2,7 +2,7 @@
   "schema": 1,
   "repository": "seedds/nxnative",
   "baseline": "ecbeae164c0b419d1ba1031248fe1402050a3eb0",
-  "reviewed_head": "c4aa24c57bff65e7a963db539123a260691e4dbe",
+  "reviewed_head": "e8ac733c49412cea6f4d704993507e9600fba0b4",
   "integrated": [
     {
       "upstream_sha": "4639c5114cbb8a8f250645941fa3a25c1ba08cc6",
@@ -21,138 +21,19 @@
       "title": "Make repeated IPA and Mac app builds incremental (#279)"
     }
   ],
-  "note": "Original main integrated through 2026-11-14. Easy immutable cloud saves and guarded game exports preserved.",
-  "integrated_head": "c4aa24c57bff65e7a963db539123a260691e4dbe",
+  "note": "Original main integrated through 2026-11-27 (upstream e8ac733c4). Easy immutable cloud saves (cloud_saves), guarded game exports, product catalog and bilingual UI preserved across the integration.",
+  "integrated_head": "e8ac733c49412cea6f4d704993507e9600fba0b4",
   "latest_full_integration": {
-    "from_fork": "e07638f251f40cc6edf8be375f2c55e720c0d5b6",
-    "previous_integrated_head": "4c574a6f055217ac0b6d5fbeccd1eb22b86dbe90",
-    "upstream_head": "c4aa24c57bff65e7a963db539123a260691e4dbe",
-    "commit_count": 262,
-    "added_games": [
-      {
-        "id": "0100C510166F0000",
-        "name": "Chained Echoes",
-        "versions": [
-          "1.1.1"
-        ]
-      },
-      {
-        "id": "01001B300B9BE000",
-        "name": "Diablo III: Eternal Collection",
-        "versions": [
-          "2.7.7.92380"
-        ]
-      },
-      {
-        "id": "0100726014352000",
-        "name": "Diablo II: Resurrected",
-        "versions": [
-          "1.0.34.0"
-        ]
-      },
-      {
-        "id": "010027400CDC6000",
-        "name": "Divinity: Original Sin 2 - Definitive Edition",
-        "versions": [
-          "1.0.12"
-        ]
-      },
-      {
-        "id": "040041E0212AE000",
-        "name": "Fast Fusion",
-        "versions": [
-          "v262144"
-        ]
-      },
-      {
-        "id": "0100EB100AB42000",
-        "name": "FINAL FANTASY XII THE ZODIAC AGE",
-        "versions": [
-          "1.1.0"
-        ]
-      },
-      {
-        "id": "0100C9C00E25C000",
-        "name": "Mario Golf: Super Rush",
-        "versions": [
-          "4.0.0"
-        ]
-      },
-      {
-        "id": "010019A01E2F2000",
-        "name": "Metroid Prime 4: Beyond",
-        "versions": [
-          "1.1.0"
-        ]
-      },
-      {
-        "id": "04008E001F098000",
-        "name": "Nintendo Switch Sports Resort",
-        "versions": [
-          "?"
-        ]
-      },
-      {
-        "id": "040032B023CA4000",
-        "name": "Orbitals",
-        "versions": [
-          "1.1.2.0"
-        ]
-      },
-      {
-        "id": "0400C76024710000",
-        "name": "PRAGMATA",
-        "versions": [
-          "v196608"
-        ]
-      },
-      {
-        "id": "0400569027BF4000",
-        "name": "Resident Evil 4",
-        "versions": [
-          "v131072"
-        ]
-      },
-      {
-        "id": "0400921025B32000",
-        "name": "Sonic Frontiers Definitive Edition",
-        "versions": [
-          "1.0.0"
-        ]
-      },
-      {
-        "id": "01009BC00C38A000",
-        "name": "The Binding of Isaac: Rebirth",
-        "versions": [
-          "1.0"
-        ]
-      },
-      {
-        "id": "01007A2027548000",
-        "name": "Trails in the Sky 2nd Chapter",
-        "versions": [
-          "1.0.4"
-        ]
-      }
-    ],
-    "updated_games": [],
-    "removed_games": [],
-    "catalog_profiles": 170,
-    "translation_chain": "66eab9c9a6b4",
-    "review": "docs/upstream-reviews/2026-11-14.md",
-    "preserved_exceptions": [
-      "Easy immutable cloud history and pre-play recovery",
-      "Directory RomFS and opt-in shader cache pruning",
-      "Prepared game exports and signing identity"
-    ],
-    "cherry_picks": [
-      {
-        "pr": 2691,
-        "head": "7abcd8f7f9c5ee3968d36ac8e29253e1b43bfb5a",
-        "revision": "3cc0425f",
-        "summary": "Restrict Metal archive cleanup to old directories"
-      }
-    ]
+    "from_fork": "89dd8851cc4f16908793d207510b5cf982e844e3",
+    "previous_integrated_head": "c4aa24c57bff65e7a963db539123a260691e4dbe",
+    "upstream_head": "e8ac733c49412cea6f4d704993507e9600fba0b4",
+    "commit_count": 749,
+    "catalog_games": 239,
+    "switch1": 218,
+    "switch2": 21,
+    "added_games": 72,
+    "updated_games": 18,
+    "removed_games": 0
   },
   "latest_incremental_integration": {
     "upstream_head": "8334fdfb50a9900d8a5fc950d099fde46d85135f",
@@ -171,7 +52,7 @@
       "added_games": [
         {
           "id": "01001F5010DFA000",
-          "name": "Pok\u00e9mon Legends: Arceus",
+          "name": "Pokémon Legends: Arceus",
           "versions": [
             "1.1.1"
           ]
@@ -255,7 +136,7 @@
         },
         {
           "id": "0100A3D008C5C000",
-          "name": "Pok\u00e9mon Scarlet",
+          "name": "Pokémon Scarlet",
           "versions": [
             "1.0.0"
           ]
@@ -383,7 +264,7 @@
         },
         {
           "id": "010029B0118E8000",
-          "name": "Need For Speed\u2122 Hot Pursuit Remastered",
+          "name": "Need For Speed™ Hot Pursuit Remastered",
           "versions": [
             "1.0.3"
           ]
@@ -603,7 +484,7 @@
         },
         {
           "id": "01008F6008C5E000",
-          "name": "Pok\u00e9mon Violet",
+          "name": "Pokémon Violet",
           "versions": [
             "1.0.0"
           ]
@@ -682,7 +563,7 @@
         },
         {
           "id": "01006C300E9F0000",
-          "name": "DRAGON QUEST XI S: Echoes of an Elusive Age \u2013 Definitive Edition",
+          "name": "DRAGON QUEST XI S: Echoes of an Elusive Age – Definitive Edition",
           "versions": [
             "1.0.4"
           ]
@@ -738,7 +619,7 @@
         },
         {
           "id": "0100F43008C44000",
-          "name": "Pok\u00e9mon Legends: Z-A",
+          "name": "Pokémon Legends: Z-A",
           "versions": [
             "2.0.2"
           ]
@@ -960,7 +841,7 @@
       "updated_games": [
         {
           "id": "0100317013770000",
-          "name": "Mario + Rabbids\u00ae Sparks of Hope",
+          "name": "Mario + Rabbids® Sparks of Hope",
           "versions": [
             "1.6.2225577"
           ]
@@ -1040,7 +921,7 @@
       "added_games": [
         {
           "id": "0100276009872000",
-          "name": "\u014cKAMI HD",
+          "name": "ŌKAMI HD",
           "versions": [
             "1.0.0"
           ]

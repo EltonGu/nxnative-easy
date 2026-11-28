@@ -2,11 +2,9 @@
 
 Read this file when resuming, then check Git status and public release metadata. It is a compact record, not evidence that pending work has shipped.
 
-## Active maintenance — 2026-11-14
+## Active maintenance — 2026-11-27
 
-Easy 1.36.3/build 65 is the last published application before this integration. The website and both README files use the searchable text compatibility catalog and original web art. The upstream community listing request is seedds/nxnative#2506.
-
-The current candidate pulls 262 engine commits through upstream c4aa24c5 and adapts #2691's Metal cache safeguard. Its catalog has 170 applications (153 Switch 1, 17 Switch 2). Easy's append-only iCloud history, game exports, signing identities, directory RomFS transfer and opt-in shader cleanup carry forward. The 1.37.0/build 66 metadata is for the candidate. Follow PR #40 for validation and check the public tag and release assets for the shipping state. See [the integration review](../upstream-reviews/2026-11-14.md).
+Easy 1.38.0/build 67 is the first owner-built release after the upstream author stopped maintaining. It integrates the full upstream history through `e8ac733c4` (749 engine commits past `c4aa24c5`), taking the catalog to 239 applications (218 Switch 1, 21 Switch 2). The merge resolved 50 files / 85 conflict hunks: Easy's immutable `cloud_saves` history, `CloudSavePanel`/`nxe_cloud_command` UI, bilingual catalog and export transaction are preserved while the rendering core (`nvn_mtl.m`, `nvn_geometry.inc`, `nvn_audio.c`, `hle_audio.c`), build tooling and `nx_extract` come from upstream. The translation chain moved `66eab9c9a6b4` → `f263dc2f7784`, so cached shader libraries rebuild. Upstream now carries the two fixes Easy had hand-applied (NVN command memory `0e409ed8a551`, zero-address GPU fault `c91dc47af0`). See [the integration review](../upstream-reviews/2026-11-27.md).
 
 ## Product and owner intent
 
